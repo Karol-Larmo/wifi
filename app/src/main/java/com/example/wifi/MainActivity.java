@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.wifi.permission.PermissionService;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -53,4 +55,9 @@ public class MainActivity extends AppCompatActivity {
         this.permissionService = permissionService;
     }
 
+    public void GoToWifi(View view) {
+        Intent intent = new Intent(this, Wifi_info.class);
+        startActivity(intent);
+
+    }
 }
