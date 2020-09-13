@@ -1,5 +1,6 @@
 package com.example.wifi;
 
+import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,9 +12,11 @@ import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,20 +29,7 @@ public class Wifi_info extends AppCompatActivity {
     private WifiReceiver receiverWifi;
     private Button btnRefresh;
     private Button graf;
-    int channelCount1 = 0;
-    int channelCount2 = 0;
-    int channelCount3 = 0;
-    int channelCount4 = 0;
-    int channelCount5 = 0;
-    int channelCount6 = 0;
-    int channelCount7 = 0;
-    int channelCount8 = 0;
-    int channelCount9 = 0;
-    int channelCount10 = 0;
-    int channelCount11 = 0;
-    int channelCount12 = 0;
-    int channelCount13 = 0;
-    int channelCount14 = 0;
+   float[] Channel_tab = new float [14];
     ListAdapter adapter;
     ListView lvWifiDetails;
     List wifiList;
@@ -69,14 +59,38 @@ public class Wifi_info extends AppCompatActivity {
         });
 
 
+        for(int i=0; i<14; i++)
+        {
+            Channel_tab[i] =0;
+        }
 
     }
 
     public void GrafWifi(View view) {
+        Log.i("CHANNELS_tab", "channel1 = " + Channel_tab[0]);
+        Log.i("CHANNELS_tab", "channel2 = " + Channel_tab[1]);
+        Log.i("CHANNELS_tab", "channel3 = " + Channel_tab[2]);
+        Log.i("CHANNELS_tab", "channel4 = " + Channel_tab[3]);
+        Log.i("CHANNELS_tab", "channel5 = " + Channel_tab[4]);
+        Log.i("CHANNELS_tab", "channel6 = " + Channel_tab[5]);
+        Log.i("CHANNELS_tab", "channel7 = " + Channel_tab[6]);
+        Log.i("CHANNELS_tab", "channel8 = " + Channel_tab[7]);
+        Log.i("CHANNELS_tab", "channel9 = " + Channel_tab[8]);
+        Log.i("CHANNELS_tab", "channel0 = " + Channel_tab[9]);
+        Log.i("CHANNELS_tab", "channel11 = " + Channel_tab[10]);
+        Log.i("CHANNELS_tab", "channel12 = " + Channel_tab[11]);
+        Log.i("CHANNELS_tab", "channel13 = " + Channel_tab[12]);
+        Log.i("CHANNELS_tab", "channel14 = " + Channel_tab[13]);
+
+
         Intent intent = new Intent(this, Graf.class);
-        startActivity(intent);
+        startActivityForResult(intent, RESULT_OK);
     }
 
+    public void Update_values()
+    {
+
+    }
 
     private void setAdapter() {
         adapter = new ListAdapter(getApplicationContext(), wifiList);
@@ -92,6 +106,23 @@ public class Wifi_info extends AppCompatActivity {
 
     class WifiReceiver extends BroadcastReceiver {
         public void onReceive(Context c, Intent intent) {
+        }
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.i("RESULT", " INN");
+        if(resultCode == RESULT_OK)
+        {
+           float tab[] = data.getExtras().getFloatArray("TAB_VALUES");
+           for(int i=0; i<14; i++)
+           {
+               Log.i("RESULT", " OKKK");
+               Channel_tab[i] += tab[i];
+           }
+ ///NIE DZIALA COS DODAWNIE, NIE ODPALA TEJ FUNKCJI NA RAZIE DUNNO WHY
         }
     }
 
