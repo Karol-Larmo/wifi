@@ -12,27 +12,35 @@ android:layout_height="0dp"
 android:layout_weight="0.9"
 android:orientation="vertical">
 
-<ListView
-    android:id="@+id/lvWifiDetails"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-</ListView>
+    <ListView
+        android:id="@+id/lvWifiDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></ListView>
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.1"
+        android:orientation="vertical">
 
-<LinearLayout
-android:layout_width="match_parent"
-android:layout_height="0dp"
-android:layout_weight="0.1"
-android:orientation="vertical">
+        <Button
+            android:id="@+id/graf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:onClick="GrafWifi"
+            android:text="Graf" />
 
-<Button
-    android:id="@+id/btnRefresh"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_gravity="center"
-    android:text="Refresh"/>
-
-</LinearLayout>
-
+        <Button
+            android:id="@+id/btnRefresh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Refresh" />
     </LinearLayout>
+
+
+
+</LinearLayout>
+
+</LinearLayout>
