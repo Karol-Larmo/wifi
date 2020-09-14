@@ -205,6 +205,7 @@ public class Graf extends AppCompatActivity {
         intent.putExtra("TAB_VALUES", tab);
         setResult(RESULT_OK, intent);
 
+        Log.i("Result", "send");
         finish();
     }
 
