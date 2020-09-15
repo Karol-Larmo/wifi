@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
+import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -166,6 +167,9 @@ public class Graf extends AppCompatActivity {
         Log.i("CHANNELS", "channel13 = " + channelCount13);
         Log.i("CHANNELS", "channel14 = " + channelCount14);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
     }
 
     private void setAdapter() {
@@ -181,6 +185,20 @@ public class Graf extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
+    }
     public void getValuesOfChannels(View view)
     {
         float tab[] = new float[14];

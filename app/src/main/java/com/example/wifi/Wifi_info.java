@@ -23,7 +23,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import android.view.MenuItem;
 
 
 public class Wifi_info extends AppCompatActivity {
@@ -76,6 +76,24 @@ public class Wifi_info extends AppCompatActivity {
             Log.i("test", " test create");
         }
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
     }
 
     public void Channel_Ratio_10s(View view)
