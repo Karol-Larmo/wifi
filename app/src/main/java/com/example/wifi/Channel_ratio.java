@@ -44,11 +44,19 @@ public class Channel_ratio extends AppCompatActivity {
 
 
 
-        float[] tab = Wifi_info.Channel_tab;
+        float[] tab_f = Wifi_info.Channel_tab;
+        int[] tab =  new int[tab_f.length];
+        int[] tab_c = Wifi_info.Channel_count;
+        for(int i=0; i<tab_f.length; i++)
+        {
+            tab[i] = Math.round(tab_f[i]);
+            tab_c[i] /= 10;
+        }
+
         String[] tmp = new String[14];
         for(int i=0; i<14; i++)
         {
-             tmp[i] = "\t\tChannel_"+ (i+1) +" = " + tab[i];
+             tmp[i] = "\t\tChannel_"+ (i+1) +" = " + tab[i] + "\t\t\t\t\t\t\t\t Device: " + tab_c[i];
         }
         chan1.setText(tmp[0]);
         chan2.setText(tmp[1]);

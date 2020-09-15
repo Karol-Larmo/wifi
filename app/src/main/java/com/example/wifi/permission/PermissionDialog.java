@@ -63,12 +63,21 @@ class PermissionDialog {
         public void onClick(DialogInterface dialog, int which) {
             dialog.dismiss();
             requestPermissionsAndroidM();
+            //requestPermissionsAndroidM2();
         }
 
         @TargetApi(Build.VERSION_CODES.M)
         private void requestPermissionsAndroidM() {
             if (BuildUtils.isMinVersionM()) {
                 activity.requestPermissions(ApplicationPermission.PERMISSIONS, ApplicationPermission.REQUEST_CODE);
+
+            }
+        }
+
+        @TargetApi(Build.VERSION_CODES.M)
+        private void requestPermissionsAndroidM2() {
+            if (BuildUtils.isMinVersionM()) {
+                activity.requestPermissions(ApplicationPermission.PERMISSIONS2, ApplicationPermission.REQUEST_CODE2);
             }
         }
 
