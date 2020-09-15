@@ -24,6 +24,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 import android.view.MenuItem;
+import com.example.wifi.SurveyList;
 
 
 public class Wifi_info extends AppCompatActivity {
@@ -35,6 +36,7 @@ public class Wifi_info extends AppCompatActivity {
     private Button graf;
     public static float[] Channel_tab = new float [14];
     public static int[] Channel_count = new int[14];
+    public int COUNT = 1;
     ListAdapter adapter;
     ListView lvWifiDetails;
     List wifiList;
@@ -50,7 +52,6 @@ public class Wifi_info extends AppCompatActivity {
 
 
         lvWifiDetails = (ListView) findViewById(R.id.lvWifiDetails);
-
         btnRefresh = (Button) findViewById(R.id.btnRefresh);
         graf = (Button) findViewById(R.id.graf);
         mainWifi = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
@@ -108,6 +109,14 @@ public class Wifi_info extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+    int[] tab = new int[14];
+        for(int i=0; i<Channel_tab.length; i++)
+        {
+            tab[i] = Math.round(Channel_tab[i]);
+        }
+    SurveyList.Survey survey= new SurveyList.Survey(String.valueOf(COUNT), tab);
+    SurveyList.addItem(survey);
+    COUNT++;
 
     Intent data = new Intent(this, Channel_ratio.class);
     ArrayList<String> channels_string = new ArrayList<>();
@@ -117,6 +126,7 @@ public class Wifi_info extends AppCompatActivity {
             tmp = "Channel_"+ i +" = " + Channel_tab[i];
             channels_string.add(tmp);
         }
+
 
     data.putStringArrayListExtra("TAB_VALUES", channels_string);
     startActivity(data);

@@ -46,14 +46,17 @@ public class History_Activity extends AppCompatActivity {
 
 
         editor.clear();
-        editor.putInt(Channel_STRING, Channel_tab.length);
-
-        for(int i=0; i<Channel_tab.length; i++)
+        editor.putInt(Channel_STRING, SurveyList.ITEMS.size());
+        for (int j=0; j<SurveyList.ITEMS.size(); j++)
         {
+            for(int i=0; i<Channel_tab.length; i++)
+            {
 
-            editor.putInt(ID + i, (int) Channel_tab[i]);
+                editor.putInt(ID + i, (int) Channel_tab[i]);
 
+            }
         }
+
         editor.apply();
     }
 
@@ -62,6 +65,7 @@ public class History_Activity extends AppCompatActivity {
     {
         SharedPreferences channel = getSharedPreferences(ChannelShared, MODE_PRIVATE);
         int numOfChannelsSeries = channel.getInt(Channel_STRING, 0);
+        int count = 0;
         if(numOfChannelsSeries != 0)
         {
             for(int i=0; i<14; i++)
@@ -74,14 +78,18 @@ public class History_Activity extends AppCompatActivity {
 
         String ID = "Channel_";
 
-
-        for (int i=0; i<numOfChannelsSeries; i++)
+        for (int j=0; j<numOfChannelsSeries; j++)
         {
-            int value = channel.getInt(ID +i, 0);
-            Channel_count[i] = value;
-
+                 for (int i=0; i<14; i++)
+                {
+                    int value = channel.getInt(ID +i, 0);
+                    Channel_tab[i] = value;
+                }
+            SurveyList.Survey survey= new SurveyList.Survey(String.valueOf(j),Channel_tab);
+                 SurveyList.addItem(survey);
         }
     }
+
 
 
 }
