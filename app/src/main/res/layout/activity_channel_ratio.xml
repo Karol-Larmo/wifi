@@ -5,13 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/background"
     tools:context=".Channel_ratio">
+
 
     <TextView
         android:id="@+id/channel_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:textColor="@color/colorAccent"
         android:layout_weight="1"
         />
 
@@ -20,6 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:textColor="@color/colorAccent"
         android:layout_weight="1" />
 
     <TextView
@@ -27,6 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:textColor="@color/colorAccent"
         android:layout_weight="1" />
 
     <TextView
@@ -34,6 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:textColor="@color/colorAccent"
         android:layout_weight="1" />
 
     <TextView
@@ -41,6 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:textColor="@color/colorAccent"
         android:layout_weight="1" />
 
     <TextView
@@ -48,6 +55,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:textColor="@color/colorAccent"
         android:layout_weight="1" />
 
     <TextView
@@ -55,6 +63,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:textColor="@color/colorAccent"
         android:layout_weight="1" />
 
     <TextView
@@ -62,6 +71,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:textColor="@color/colorAccent"
         android:layout_weight="1" />
 
     <TextView
@@ -69,6 +79,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:textColor="@color/colorAccent"
         android:layout_weight="1" />
 
     <TextView
@@ -76,6 +87,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:textColor="@color/colorAccent"
         android:layout_weight="1" />
 
     <TextView
@@ -83,6 +95,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:textColor="@color/colorAccent"
         android:layout_weight="1" />
 
     <TextView
@@ -90,17 +103,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:textColor="@color/colorAccent"
         android:layout_weight="1" />
     <TextView
         android:id="@+id/channel_13"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:textColor="@color/colorAccent"
         android:layout_weight="1" />
     <TextView
         android:id="@+id/channel_14"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="TextView"
+        android:textColor="@color/colorAccent"
         android:layout_weight="1" />
 </LinearLayout>

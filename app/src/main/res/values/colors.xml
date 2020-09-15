@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorPrimary">#272796</color>
+    <color name="colorPrimaryDark">#131338</color>
     <color name="colorAccent">#03DAC5</color>
-    <color name="regular">#9E9E9E</color>
+    <color name="black">#000000</color>
+    <color name="regular">#35353b</color>
     <!-- blue_500 -->
     <color name="selected">#2196F3</color>
     <!-- grey_500 -->
@@ -24,4 +25,8 @@
     <color name="success">#4CAF50</color>
     <!-- background -->
     <color name="background">#616161</color>
+    <!-- button -->
+    <color name="roundButton1">#3232bf</color>
+    <color name="roundButton2">#3b3bed</color>
+    <color name="roundButton3">#656570</color>
 </resources>

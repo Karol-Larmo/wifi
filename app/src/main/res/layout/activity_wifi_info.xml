@@ -4,18 +4,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/background"
     tools:context="${relativePackage}.${activityClass}">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="308dp"
         android:layout_weight="0.9"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        >
 
         <ListView
             android:id="@+id/lvWifiDetails"
             android:layout_width="match_parent"
-            android:layout_height="676dp"></ListView>
+            android:layout_height="match_parent"
+            android:textFilterEnabled="false"
+            android:textColor="@android:color/white" />
 
 
     </LinearLayout>
@@ -32,7 +36,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:onClick="Test_channels"
-            android:text="Graf" />
+            android:text="Graf"
+            android:background="@drawable/recroundbutton" />
 
         <Button
             android:id="@+id/btnRefresh"
@@ -40,7 +45,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:onClick="SCAN_WIFI_LIST"
-            android:text="Refresh" />
+            android:text="Refresh"
+            android:background="@drawable/recroundbutton"/>
+
     </LinearLayout>
 
 </LinearLayout>

@@ -15,11 +15,12 @@
         android:roundIcon="@drawable/ic_app"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Channel_ratio"></activity>
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".Channel_ratio" />
         <activity android:name=".WifiReceiver" />
         <activity android:name=".Wifi_info" />
         <activity android:name=".Graf" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".util.PopUpScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
