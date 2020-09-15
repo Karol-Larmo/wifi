@@ -1,10 +1,16 @@
 package com.example.wifi;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
+import android.widget.Toast;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class History_Activity extends AppCompatActivity {
 
@@ -19,6 +25,35 @@ public class History_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_history);
 
         getValues();
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_home:
+                        Toast.makeText(History_Activity.this, "Home", Toast.LENGTH_SHORT).show();
+                        Intent homeIntent = new Intent(History_Activity.this, MainActivity.class);
+                        History_Activity.this.startActivity(homeIntent);
+                        break;
+                    case R.id.action_sieci_WiFi:
+                        Toast.makeText(History_Activity.this, "Sieci_WiFi", Toast.LENGTH_SHORT).show();
+                        Intent infoIntent = new Intent(History_Activity.this, Wifi_info.class);
+                        History_Activity.this.startActivity(infoIntent);
+                        break;
+                    case R.id.action_grafy:
+                        Toast.makeText(History_Activity.this, "Grafy", Toast.LENGTH_SHORT).show();
+                        Intent grafIntent = new Intent(History_Activity.this, Graf.class);
+                        History_Activity.this.startActivity(grafIntent);
+                        break;
+                    case R.id.action_historia:
+                        Toast.makeText(History_Activity.this, "Historia", Toast.LENGTH_SHORT).show();
+                        Intent historyIntent = new Intent(History_Activity.this, History_Activity.class);
+                        History_Activity.this.startActivity(historyIntent);
+                        break;
+                }
+                return true;
+            }
+        });
 
     }
 

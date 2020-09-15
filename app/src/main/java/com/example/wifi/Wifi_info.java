@@ -1,5 +1,6 @@
 package com.example.wifi;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -25,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 import android.view.MenuItem;
 import com.example.wifi.SurveyList;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
 public class Wifi_info extends AppCompatActivity {
@@ -80,6 +82,35 @@ public class Wifi_info extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_home:
+                        Toast.makeText(Wifi_info.this, "Home", Toast.LENGTH_SHORT).show();
+                        Intent homeIntent = new Intent(Wifi_info.this, MainActivity.class);
+                        Wifi_info.this.startActivity(homeIntent);
+                        break;
+                    case R.id.action_sieci_WiFi:
+                        Toast.makeText(Wifi_info.this, "Sieci_WiFi", Toast.LENGTH_SHORT).show();
+                        Intent infoIntent = new Intent(Wifi_info.this, Wifi_info.class);
+                        Wifi_info.this.startActivity(infoIntent);
+                        break;
+                    case R.id.action_grafy:
+                        Toast.makeText(Wifi_info.this, "Grafy", Toast.LENGTH_SHORT).show();
+                        Intent grafIntent = new Intent(Wifi_info.this, Graf.class);
+                        Wifi_info.this.startActivity(grafIntent);
+                        break;
+                    case R.id.action_historia:
+                        Toast.makeText(Wifi_info.this, "Historia", Toast.LENGTH_SHORT).show();
+                        Intent historyIntent = new Intent(Wifi_info.this, History_Activity.class);
+                        Wifi_info.this.startActivity(historyIntent);
+                        break;
+                }
+                return true;
+            }
+        });
     }
 
     @Override
