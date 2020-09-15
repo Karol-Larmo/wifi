@@ -1,5 +1,6 @@
 package com.example.wifi;
 
+import android.graphics.Color;
 import android.net.wifi.ScanResult;
 import android.widget.BaseAdapter;
 import java.util.List;
@@ -58,6 +59,8 @@ public class ListAdapter extends BaseAdapter {
                 + convertFrequencyToChannel(wifiList.get(position).frequency)
                 + "\nFrequency :: " + wifiList.get(position).frequency
                 + "\nCapability :: " + wifiList.get(position).capabilities);
+
+        holder.tvDetails.setTextColor(Color.WHITE);
 
         return view;
     }
