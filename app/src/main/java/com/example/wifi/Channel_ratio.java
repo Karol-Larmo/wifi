@@ -4,18 +4,26 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.view.View;
 
 public class Channel_ratio extends AppCompatActivity {
+
+    Button button_graf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_channel_ratio);
+        button_graf = (Button) findViewById(R.id.button_graf);
         Show_Channel();
     }
-
+    public void Graf_bars(View view) {
+        Intent intent = new Intent(this, Graf_bars.class);
+        startActivity(intent);
+    }
 
     public void Show_Channel()
     {

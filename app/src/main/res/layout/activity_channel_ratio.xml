@@ -119,4 +119,11 @@
         android:text="TextView"
         android:textColor="@color/colorAccent"
         android:layout_weight="1" />
+    <Button
+        android:id="@+id/button_graf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        android:onClick="Graf_bars"
+        android:layout_weight="1" />
 </LinearLayout>

@@ -16,6 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity"></activity>
+        <activity android:name=".Graf_bars" />
         <activity android:name=".Channel_ratio" />
         <activity android:name=".WifiReceiver" />
         <activity android:name=".Wifi_info" />
