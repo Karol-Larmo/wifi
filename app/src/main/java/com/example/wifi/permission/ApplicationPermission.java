@@ -29,8 +29,10 @@ import androidx.annotation.NonNull;
 import com.example.wifi.util.BuildUtils;
 
 class ApplicationPermission {
-    static final String[] PERMISSIONS = {Manifest.permission.ACCESS_FINE_LOCATION};
+    static final String[] PERMISSIONS = {Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE};
     static final int REQUEST_CODE = 0x123450;
+    static final String[] PERMISSIONS2 = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+    static final int REQUEST_CODE2 = 112;
 
     private final Activity activity;
     private final PermissionDialog permissionDialog;
