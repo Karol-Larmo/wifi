@@ -33,23 +33,23 @@ public class MainActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.action_home:
                         Toast.makeText(MainActivity.this, "Home", Toast.LENGTH_SHORT).show();
-                        Intent homeIntent = new Intent(MainActivity.this, MainActivity.class);
-                        MainActivity.this.startActivity(homeIntent);
+                        //Intent homeIntent = new Intent(MainActivity.this, MainActivity.class);
+                        //MainActivity.this.startActivity(homeIntent);
                         break;
                     case R.id.action_sieci_WiFi:
                         Toast.makeText(MainActivity.this, "Sieci_WiFi", Toast.LENGTH_SHORT).show();
                         Intent infoIntent = new Intent(MainActivity.this, Wifi_info.class);
-                        MainActivity.this.startActivity(infoIntent);
+                        startActivity(infoIntent);
                         break;
                     case R.id.action_grafy:
                         Toast.makeText(MainActivity.this, "Grafy", Toast.LENGTH_SHORT).show();
                         Intent grafIntent = new Intent(MainActivity.this, Graf.class);
-                        MainActivity.this.startActivity(grafIntent);
+                        startActivity(grafIntent);
                         break;
                     case R.id.action_historia:
                         Toast.makeText(MainActivity.this, "Historia", Toast.LENGTH_SHORT).show();
                         Intent historyIntent = new Intent(MainActivity.this, History_Activity.class);
-                        MainActivity.this.startActivity(historyIntent);
+                        startActivity(historyIntent);
                         break;
                 }
                 return true;

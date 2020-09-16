@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/background"
-    tools:context="${relativePackage}.${activityClass}">
+    tools:context=".Wifi_info">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,17 +20,22 @@
             android:id="@+id/lvWifiDetails"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:textFilterEnabled="false"
-            android:textColor="@android:color/white" />
+            android:textFilterEnabled="false" />
 
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
+<<<<<<< Updated upstream
         android:layout_height="0dp"
         android:layout_weight="0.45"
         android:orientation="vertical">
+=======
+        android:layout_weight="0.45"
+        android:orientation="vertical"
+        android:layout_height="0dp">
+>>>>>>> Stashed changes
 
         <Button
             android:id="@+id/graf"
@@ -39,7 +44,7 @@
             android:layout_gravity="center"
             android:background="@drawable/recroundbutton"
             android:onClick="Test_channels"
-            android:text="Graf"
+            android:text="BEGIN TEST"
             app:layout_constraintBottom_toTopOf="@+id/btnRefresh" />
 
         <Button
