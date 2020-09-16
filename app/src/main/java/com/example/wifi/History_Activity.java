@@ -43,13 +43,24 @@ public class History_Activity extends AppCompatActivity {
             int[] tab3 = new int[14];
             SurveyList.Survey tmp = SurveyList.ITEMS.get(i);
             tab2 = tmp.getValue();
-            tab3 = tab2;
+            tab3 = tmp.getValue();
             Log.i("Tab", "Tab2 = " + tab2[0] + " ... " + tab2[1] + " ... " + tab2[2] + " ... " + tab2[3] + " ... " + tab2[4] + " ... " + tab2[5] + " ... " + tab2[6] + " ... " + tab2[7] + " ... " + tab2[8] + " ... " + tab2[9] + " ... ");
             Log.i("Tab", "Tab3 = " + tab3[0] + " ... " + tab3[1] + " ... " + tab3[2] + " ... " + tab3[3] + " ... " + tab3[4] + " ... "+ tab3[5] + " ... " + tab3[6] + " ... " + tab3[7] + " ... " + tab3[8] + " ... " + tab3[9] + " ... " + tab3[10] + " ... " + tab3[11] + " ... "  );
 
 
             int channel1 =0, channel2=0, channel3=0;
-            Arrays.sort(tab2);
+            for (int k=13; k>0; k--)
+            {
+                for(int m=0; m<k; m++)
+                {
+                    if(tab2[m] > tab2[k])
+                    {
+                        int tmp2 = tab2[m];
+                        tab2[m] = tab2[m+1];
+                        tab2[m+1] = tmp2;
+                    }
+                }
+            }
 
             Log.i("Tab", "Tab2 = " + tab2[0] + " ... " + tab2[1] + " ... " + tab2[2] + " ... " + tab2[3] + " ... " + tab2[4] + " ... " + tab2[5] + " ... " + tab2[6] + " ... " + tab2[7] + " ... " + tab2[8] + " ... " + tab2[9] + " ... ");
             Log.i("Tab", "Tab3 = " + tab3[0] + " ... " + tab3[1] + " ... " + tab3[2] + " ... " + tab3[3] + " ... " + tab3[4] + " ... "+ tab3[5] + " ... " + tab3[6] + " ... " + tab3[7] + " ... " + tab3[8] + " ... " + tab3[9] + " ... " + tab3[10] + " ... " + tab3[11] + " ... "  );
