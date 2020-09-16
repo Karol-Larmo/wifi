@@ -115,6 +115,8 @@ String string_tmp = "test";
             }
         });
 
+        bottomNavigationView.setSelectedItemId(R.id.action_historia);
+
     }
 
 

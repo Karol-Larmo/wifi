@@ -113,6 +113,8 @@ public class Wifi_info extends AppCompatActivity {
                 return true;
             }
         });
+
+        bottomNavigationView.setSelectedItemId(R.id.action_sieci_WiFi);
     }
 
     @Override

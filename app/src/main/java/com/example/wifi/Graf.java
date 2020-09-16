@@ -202,6 +202,8 @@ public class Graf extends AppCompatActivity {
                 return true;
             }
         });
+
+        bottomNavigationView.setSelectedItemId(R.id.action_grafy);
     }
 
     private void setAdapter() {
