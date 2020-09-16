@@ -1,10 +1,12 @@
 package com.example.wifi;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -16,6 +18,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 
 public class History_Activity extends AppCompatActivity {
 
@@ -26,6 +29,7 @@ public class History_Activity extends AppCompatActivity {
     private ListView list;
     private ArrayAdapter<String> adapter;
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,53 +43,37 @@ public class History_Activity extends AppCompatActivity {
         Log.i("Size", " " + SurveyList.ITEMS.size());
         for (int i =0; i<SurveyList.ITEMS.size(); i ++)
         {
-            int[] tab2 = new int[14];
-            int[] tab3 = new int[14];
             SurveyList.Survey tmp = SurveyList.ITEMS.get(i);
-            tab2 = tmp.getValue();
-            tab3 = tmp.getValue();
-            Log.i("Tab", "Tab2 = " + tab2[0] + " ... " + tab2[1] + " ... " + tab2[2] + " ... " + tab2[3] + " ... " + tab2[4] + " ... " + tab2[5] + " ... " + tab2[6] + " ... " + tab2[7] + " ... " + tab2[8] + " ... " + tab2[9] + " ... ");
-            Log.i("Tab", "Tab3 = " + tab3[0] + " ... " + tab3[1] + " ... " + tab3[2] + " ... " + tab3[3] + " ... " + tab3[4] + " ... "+ tab3[5] + " ... " + tab3[6] + " ... " + tab3[7] + " ... " + tab3[8] + " ... " + tab3[9] + " ... " + tab3[10] + " ... " + tab3[11] + " ... "  );
+            int[] tab2 = tmp.getValue();
+            int[][] tab3 = new int [14][2];
+            //Log.i("Tab", "Tab2 = " + tab2[0] + " ... " + tab2[1] + " ... " + tab2[2] + " ... " + tab2[3] + " ... " + tab2[4] + " ... " + tab2[5] + " ... " + tab2[6] + " ... " + tab2[7] + " ... " + tab2[8] + " ... " + tab2[9] + " ... ");
 
+            for(int j=0; j<14; j++) {
+                tab3[j][1] = j+1;
+                tab3[j][0] = tab2[j];
+            }
 
-            int channel1 =0, channel2=0, channel3=0;
-            for (int k=13; k>0; k--)
-            {
-                for(int m=0; m<k; m++)
-                {
-                    if(tab2[m] > tab2[k])
-                    {
-                        int tmp2 = tab2[m];
-                        tab2[m] = tab2[m+1];
-                        tab2[m+1] = tmp2;
-                    }
+            java.util.Arrays.sort(tab3, new java.util.Comparator<int[]>() {
+                public int compare(int[] a, int[] b) {
+                    return Integer.compare(a[1], b[1]);
                 }
-            }
+            });
+
+            Log.i("Tab", "Tab3 =  " + tab3[0][0] + " c... " + tab3[0][1] + " ... "+ tab3[1][0] + " ...c " + tab3[1][1] +" ... " + tab3[2][0] + " ...c " + tab3[2][1] + " ... "+ tab3[3][0] + " ... c" + tab3[3][1] + " ... " + tab3[4][0] + " ...c " + tab3[4][1] + " ... ");
+
+            Arrays.sort(tab3, (a,b) -> Integer.compare(a[0],b[0]));
 
             Log.i("Tab", "Tab2 = " + tab2[0] + " ... " + tab2[1] + " ... " + tab2[2] + " ... " + tab2[3] + " ... " + tab2[4] + " ... " + tab2[5] + " ... " + tab2[6] + " ... " + tab2[7] + " ... " + tab2[8] + " ... " + tab2[9] + " ... ");
-            Log.i("Tab", "Tab3 = " + tab3[0] + " ... " + tab3[1] + " ... " + tab3[2] + " ... " + tab3[3] + " ... " + tab3[4] + " ... "+ tab3[5] + " ... " + tab3[6] + " ... " + tab3[7] + " ... " + tab3[8] + " ... " + tab3[9] + " ... " + tab3[10] + " ... " + tab3[11] + " ... "  );
+            Log.i("Tab", "Tab3 =  " + tab3[0][0] + " c... " + tab3[0][1] + " ... "+ tab3[1][0] + " ...c " + tab3[1][1] +" ... " + tab3[2][0] + " ...c " + tab3[2][1] + " ... "+ tab3[3][0] + " ... c" + tab3[3][1] + " ... " + tab3[4][0] + " ...c " + tab3[4][1] + " ... ");
 
-            for(int j=0; j<14; j++)
-            {
-                    if(tab2[j] == tab3[j] )
-                    {
-                        if(channel1 ==0)
-                        channel1 = j;
-                        else if(channel2 ==0)
-                            channel2 = j;
-                        else if (channel3 ==0)
-                            channel3 = j;
-
-                    }
-            }
             // String string_tmp = "test";
             String string_tmp = "\nSurvey " + (i+1) +
-                    "\nBest Channels: " + channel1 + ", " + channel2 + ", " + channel3 +
-                    "\n Values: \t" + tab2[0] + ", " + tab2[1] + ", " + tab2[2]  ;
+                    "\nBest Channels: " + tab3[0][1] + ", " + tab3[1][1] + ", " + tab3[2][1] +
+                    "\n Values: \t" + tab3[0][0] + ", " + tab3[1][0] + ", " + tab3[2][0]  ;
 
             surveyList.add(string_tmp);
 
-            Log.i("String", "String added " + string_tmp + " " + tab2[0]);
+            Log.i("String", "String added " + string_tmp + " " );
         }
 
         adapter = new ArrayAdapter<String>(this, R.layout.row, surveyList);
