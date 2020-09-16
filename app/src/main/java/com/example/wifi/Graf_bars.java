@@ -1,9 +1,14 @@
 package com.example.wifi;
 
+import android.content.Context;
+import android.graphics.Color;
+import android.net.wifi.ScanResult;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.data.BarData;
@@ -12,13 +17,20 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Graf_bars extends AppCompatActivity {
+
+    private WifiManager mainWifi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.graf_bars);
+
+        mainWifi = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        List<ScanResult> wifiList1;
+        wifiList1 = mainWifi.getScanResults();
 
         float[] tab = Wifi_info.Channel_tab;
         String[] tmp = new String[14];
@@ -83,11 +95,29 @@ public class Graf_bars extends AppCompatActivity {
         xAxisLabel.add("13");
         xAxisLabel.add("14");
 
+        int[] colors = new int[] {ContextCompat.getColor(barChart.getContext(), R.color.dark_green),
+                ContextCompat.getColor(barChart.getContext(), R.color.blue),
+                ContextCompat.getColor(barChart.getContext(), R.color.red)};
+
+        int[] tmpColors = new int[13];
 
 
         barChart.setData(data); // set the data and list of labels into chart
         barChart.setDescription("Set Bar Chart Description Here");  // set the description
-        bardataset.setColors(ColorTemplate.COLORFUL_COLORS);
+
+
+    for(int i = 0; i< wifiList1.size(); i++) {
+        if (tab[i]<30) {
+            tmpColors[i] = getResources().getColor(R.color.dark_green);
+        } else if (tab[i]>=30 && tab[i]<60) {
+            tmpColors[i] = getResources().getColor(R.color.blue);//Color.rgb(247, 207, 19);
+        } else if (tab[i]>=60) {
+            tmpColors[i] = getResources().getColor(R.color.red);//Color.rgb(199, 0, 15);
+        }
+    }
+
+
+        bardataset.setColors(tmpColors);
         barChart.animateY(5000);
 
         if (getSupportActionBar() != null) {

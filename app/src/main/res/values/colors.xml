@@ -26,6 +26,20 @@
     <!-- background -->
     <color name="background">#616161</color>
     <!-- button -->
+    <color name="green">#A4C639</color>
+    <color name="orange">#FF8C00</color>
+    <color name="red">#DA3B01</color>
+    <color name="blue">#0078D7</color>
+    <color name="purple">#B146C2</color>
+    <color name="grey">#7A7574</color>
+    <color name="pink">#EA005E</color>
+    <color name="dark_green">#10893E</color>
+    <color name="dark_blue">#0063B1</color>
+    <color name="magneta">#E3008C</color>
+    <color name="brown">#847545</color>
+    <color name="white">#FFFFFF</color>
+    <color name="light_yellow">#E3008C</color>
+    <color name="yellow">#E4EF16</color>
     <color name="roundButton1">#3232bf</color>
     <color name="roundButton2">#3b3bed</color>
     <color name="roundButton3">#656570</color>
