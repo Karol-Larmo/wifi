@@ -6,6 +6,7 @@ import com.example.wifi.permission.PermissionService;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
 
     private String currentCountryCode;
     private PermissionService permissionService;
+    public final String Channel_STRING = "CHANNEL_RATIO_DATA";
+    public final String ChannelShared = "ChannelShared";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +58,8 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        restoreChannels();
     }
 
 
@@ -92,4 +97,30 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+    public void restoreChannels()
+    {
+        SharedPreferences channel = getSharedPreferences(ChannelShared, MODE_PRIVATE);
+        int numOfChannelsSeries = channel.getInt(Channel_STRING, 0);
+        int count = 0;
+        int[] Channel_tab = new int [14];
+        if(numOfChannelsSeries != 0)
+        {
+
+        }
+
+        String ID = "Channel_";
+
+        for (int j=0; j<numOfChannelsSeries; j++)
+        {
+            for (int i=0; i<14; i++)
+            {
+                int value = channel.getInt(ID +i, 0);
+                Channel_tab[i] = value;
+            }
+            SurveyList.Survey survey= new SurveyList.Survey(String.valueOf(j),Channel_tab);
+            SurveyList.addItem(survey);
+        }
+    }
+
 }

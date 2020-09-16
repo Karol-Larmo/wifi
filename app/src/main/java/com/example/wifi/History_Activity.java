@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -35,6 +36,8 @@ public class History_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
+        
+
         getValues();
 
         list = (ListView) findViewById(R.id.history_list);
@@ -53,11 +56,7 @@ public class History_Activity extends AppCompatActivity {
                 tab3[j][0] = tab2[j];
             }
 
-            java.util.Arrays.sort(tab3, new java.util.Comparator<int[]>() {
-                public int compare(int[] a, int[] b) {
-                    return Integer.compare(a[1], b[1]);
-                }
-            });
+
 
             Log.i("Tab", "Tab3 =  " + tab3[0][0] + " c... " + tab3[0][1] + " ... "+ tab3[1][0] + " ...c " + tab3[1][1] +" ... " + tab3[2][0] + " ...c " + tab3[2][1] + " ... "+ tab3[3][0] + " ... c" + tab3[3][1] + " ... " + tab3[4][0] + " ...c " + tab3[4][1] + " ... ");
 
@@ -69,7 +68,7 @@ public class History_Activity extends AppCompatActivity {
             // String string_tmp = "test";
             String string_tmp = "\nSurvey " + (i+1) +
                     "\nBest Channels: " + tab3[0][1] + ", " + tab3[1][1] + ", " + tab3[2][1] +
-                    "\n Values: \t" + tab3[0][0] + ", " + tab3[1][0] + ", " + tab3[2][0]  ;
+                    "\nValues: \t" + tab3[0][0] + ", " + tab3[1][0] + ", " + tab3[2][0]  ;
 
             surveyList.add(string_tmp);
 
@@ -129,6 +128,10 @@ public class History_Activity extends AppCompatActivity {
     }
 
 
+    public void saveChannels(View viw)
+    {
+        saveChannels();
+    }
 
 
     private void saveChannels()
@@ -155,7 +158,9 @@ public class History_Activity extends AppCompatActivity {
     }
 
 
-    private void restoreChannels()
+
+
+    public void restoreChannels()
     {
         SharedPreferences channel = getSharedPreferences(ChannelShared, MODE_PRIVATE);
         int numOfChannelsSeries = channel.getInt(Channel_STRING, 0);
@@ -185,5 +190,9 @@ public class History_Activity extends AppCompatActivity {
     }
 
 
-
+    public void clearList(View view) {
+        SurveyList.clearList();
+        Intent historyIntent = new Intent(History_Activity.this, History_Activity.class);
+       startActivity(historyIntent);
+    }
 }
