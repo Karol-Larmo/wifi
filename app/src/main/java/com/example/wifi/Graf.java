@@ -10,10 +10,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ListView;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.wifi.permission.PermissionService;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -170,6 +173,35 @@ public class Graf extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_home:
+                        Toast.makeText(Graf.this, "Home", Toast.LENGTH_SHORT).show();
+                        Intent homeIntent = new Intent(Graf.this, MainActivity.class);
+                        Graf.this.startActivity(homeIntent);
+                        break;
+                    case R.id.action_sieci_WiFi:
+                        Toast.makeText(Graf.this, "Sieci_WiFi", Toast.LENGTH_SHORT).show();
+                        Intent infoIntent = new Intent(Graf.this, Wifi_info.class);
+                        Graf.this.startActivity(infoIntent);
+                        break;
+                    case R.id.action_grafy:
+                        Toast.makeText(Graf.this, "Grafy", Toast.LENGTH_SHORT).show();
+                        Intent grafIntent = new Intent(Graf.this, Graf.class);
+                        Graf.this.startActivity(grafIntent);
+                        break;
+                    case R.id.action_historia:
+                        Toast.makeText(Graf.this, "Historia", Toast.LENGTH_SHORT).show();
+                        Intent historyIntent = new Intent(Graf.this, History_Activity.class);
+                        Graf.this.startActivity(historyIntent);
+                        break;
+                }
+                return true;
+            }
+        });
     }
 
     private void setAdapter() {

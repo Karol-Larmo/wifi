@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <item
+        android:id="@+id/action_home"
+        android:enabled="true"
+        android:icon="@drawable/home"
+        android:title="Home"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_sieci_WiFi"
+        android:enabled="true"
+        android:icon="@drawable/wifi"
+        android:title="Sieci WiFi"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_grafy"
+        android:enabled="true"
+        android:icon="@drawable/graph"
+        android:title="Grafy"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_historia"
+        android:enabled="true"
+        android:icon="@drawable/history"
+        android:title="Historia"
+        app:showAsAction="ifRoom" />
+</menu>

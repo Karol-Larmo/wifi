@@ -3,10 +3,13 @@ package com.example.wifi;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.wifi.permission.PermissionService;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -23,6 +26,35 @@ public class MainActivity extends AppCompatActivity {
         permissionService = new PermissionService(this);
         permissionService.check();
 
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_home:
+                        Toast.makeText(MainActivity.this, "Home", Toast.LENGTH_SHORT).show();
+                        Intent homeIntent = new Intent(MainActivity.this, MainActivity.class);
+                        MainActivity.this.startActivity(homeIntent);
+                        break;
+                    case R.id.action_sieci_WiFi:
+                        Toast.makeText(MainActivity.this, "Sieci_WiFi", Toast.LENGTH_SHORT).show();
+                        Intent infoIntent = new Intent(MainActivity.this, Wifi_info.class);
+                        MainActivity.this.startActivity(infoIntent);
+                        break;
+                    case R.id.action_grafy:
+                        Toast.makeText(MainActivity.this, "Grafy", Toast.LENGTH_SHORT).show();
+                        Intent grafIntent = new Intent(MainActivity.this, Graf.class);
+                        MainActivity.this.startActivity(grafIntent);
+                        break;
+                    case R.id.action_historia:
+                        Toast.makeText(MainActivity.this, "Historia", Toast.LENGTH_SHORT).show();
+                        Intent historyIntent = new Intent(MainActivity.this, History_Activity.class);
+                        MainActivity.this.startActivity(historyIntent);
+                        break;
+                }
+                return true;
+            }
+        });
     }
 
 
