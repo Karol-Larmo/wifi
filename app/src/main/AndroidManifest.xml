@@ -32,14 +32,14 @@
                 android:resource="@xml/file_paths" />
         </provider>
 
-        <activity android:name=".History_Activity"></activity>
-        <activity android:name=".MainActivity"></activity>
+
         <activity android:name=".Graf_bars" />
-
+        <activity android:name=".History_Activity" />
+        <activity android:name=".MainActivity" />
         <activity android:name=".Channel_ratio" />
-
         <activity android:name=".Wifi_info" />
         <activity android:name=".Graf" />
+
         <activity android:name=".util.PopUpScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

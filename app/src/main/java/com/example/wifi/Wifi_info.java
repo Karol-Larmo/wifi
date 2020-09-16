@@ -83,7 +83,7 @@ public class Wifi_info extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-
+/*
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -112,7 +112,7 @@ public class Wifi_info extends AppCompatActivity {
                 }
                 return true;
             }
-        });
+        }); */
     }
 
     @Override
