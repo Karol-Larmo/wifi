@@ -57,6 +57,8 @@ public class History_Activity extends AppCompatActivity {
             }
         });
 
+        bottomNavigationView.setSelectedItemId(R.id.action_historia);
+
     }
 
 
