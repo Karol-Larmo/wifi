@@ -1,5 +1,7 @@
 package com.example.wifi;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -50,6 +52,7 @@ public class SurveyList {
             for(int i=0; i<14; i++)
             {
                 Channels_ratio[i] = Math.round(tab[i]);
+              //  Log.i("Added", " value " + i + " =" + Channels_ratio[i] );
             }
         }
 

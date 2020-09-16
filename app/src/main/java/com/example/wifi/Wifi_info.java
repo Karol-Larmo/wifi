@@ -1,7 +1,6 @@
 package com.example.wifi;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,23 +8,26 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Color;
+import android.icu.text.Transliterator;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 import android.view.MenuItem;
-import com.example.wifi.SurveyList;
+
+import com.google.android.material.animation.Positioning;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
@@ -35,14 +37,16 @@ public class Wifi_info extends AppCompatActivity {
     private WifiManager mainWifi;
     private WifiReceiver receiverWifi;
     private Button btnRefresh;
-    private Button graf;
+    private Button TestStartButton;
     public static float[] Channel_tab = new float [14];
     public static int[] Channel_count = new int[14];
     public int COUNT = 1;
     ListAdapter adapter;
     ListView lvWifiDetails;
+    TextView timer;
     List wifiList;
     String BSSID="";
+    int COUNTER = 10;
 
 
 
@@ -55,8 +59,11 @@ public class Wifi_info extends AppCompatActivity {
 
         lvWifiDetails = (ListView) findViewById(R.id.lvWifiDetails);
         btnRefresh = (Button) findViewById(R.id.btnRefresh);
-        graf = (Button) findViewById(R.id.graf);
+        TestStartButton = (Button) findViewById(R.id.graf);
         mainWifi = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+
+        timer = (TextView) findViewById(R.id.timer);
+        timer.setVisibility(View.INVISIBLE);
 
         WifiInfo info = null;
         if (mainWifi != null) {
@@ -132,40 +139,54 @@ public class Wifi_info extends AppCompatActivity {
         this.finish();
     }
 
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+        lvWifiDetails.setVisibility(View.VISIBLE);
+        btnRefresh.setVisibility(View.VISIBLE);
+        TestStartButton.setVisibility(View.VISIBLE);
+        COUNTER = 10;
+
+    }
+
     public void Channel_Ratio_10s(View view)
     {
 
-    for(int i=0; i<10; i++)
-    {
-        Update_values();
-
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-
-        for(int i=0; i<10; i++)
-        {
+        new CountDownTimer(10000, 1000){
+        public void onTick(long millisUntilFinished){
             Update_values();
-            Log.i("test", "asd petla chuj mi na dupe");
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            timer.setVisibility(View.VISIBLE);
+            timer.setTextColor(Color.WHITE);
+            timer.setText("WAIT " + COUNTER + " S");
+            timer.setTextSize(30);
+
+            //
+
+            COUNTER--;
+        }
+        public  void onFinish(){
+            Toast.makeText(Wifi_info.this, "FINISHED LOL TEST", Toast.LENGTH_SHORT).show();
+            timer.setVisibility(View.INVISIBLE);
+            timer.setTextSize(1);
+            int[] tab = new int[14];
+            for(int i=0; i<Channel_tab.length; i++)
+            {
+                tab[i] = Math.round(Channel_tab[i]);
             }
+            SurveyList.Survey survey= new SurveyList.Survey(String.valueOf(COUNT), Channel_tab);
+            SurveyList.addItem(survey);
 
-        }
-        int[] tab = new int[14];
-        for(int i=0; i<Channel_tab.length; i++)
-        {
-            tab[i] = Math.round(Channel_tab[i]);
-        }
-        SurveyList.Survey survey= new SurveyList.Survey(String.valueOf(COUNT), tab);
-        SurveyList.addItem(survey);
-        COUNT++;
 
-        Intent data = new Intent(this, Channel_ratio.class);
-        ArrayList<String> channels_string = new ArrayList<>();
+            COUNT++;
+            Log.i("TAB_wifiinfo", " tab = " + tab[0] +", "+ tab[1] +", "+ tab[2] +", "+ tab[3] +", "+ tab[4] +", "+ tab[5] +", "+ tab[6] +", "+ tab[7] +", "+ tab[8] +", "+ tab[9] +", "+ tab[10] +", "+ tab[11] +", "+ tab[12] +", "+ tab[13] +", ");
+
+
+
+
+
+            Intent data = new Intent(Wifi_info.this , Channel_ratio.class);
+        /*ArrayList<String> channels_string = new ArrayList<>();
         String tmp;
         for(int i=0; i<14; i++)
         {
@@ -174,14 +195,35 @@ public class Wifi_info extends AppCompatActivity {
         }
 
 
-        data.putStringArrayListExtra("TAB_VALUES", channels_string);
-        startActivity(data);
+        data.putStringArrayListExtra("TAB_VALUES", channels_string);*/
+            startActivity(data);
+
+
+        }
+    }.start();
+
+
+
+      /*  for(int i=0; i<10; i++)
+        {
+
+
+
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        } */
+
 
     }
 
     public void Test_channels(View view)
     {
-
+        lvWifiDetails.setVisibility(View.INVISIBLE);
+        btnRefresh.setVisibility(View.INVISIBLE);
+        TestStartButton.setVisibility(View.INVISIBLE);
         Channel_Ratio_10s(view);
 
     }
