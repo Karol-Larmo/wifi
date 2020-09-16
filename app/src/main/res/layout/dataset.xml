@@ -4,12 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/background"
-        android:scaleType = "centerCrop"
-        />
+
 
     <TextView
     android:id="@+id/tvDetails"

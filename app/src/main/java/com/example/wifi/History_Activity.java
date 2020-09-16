@@ -25,7 +25,9 @@ public class History_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_history);
 
         getValues();
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+
+
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigationH);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -42,13 +44,13 @@ public class History_Activity extends AppCompatActivity {
                         break;
                     case R.id.action_grafy:
                         Toast.makeText(History_Activity.this, "Grafy", Toast.LENGTH_SHORT).show();
-                        Intent grafIntent = new Intent(History_Activity.this, Graf.class);
+                        Intent grafIntent = new Intent(History_Activity.this, Graf_bars.class);
                         History_Activity.this.startActivity(grafIntent);
                         break;
                     case R.id.action_historia:
                         Toast.makeText(History_Activity.this, "Historia", Toast.LENGTH_SHORT).show();
-                        Intent historyIntent = new Intent(History_Activity.this, History_Activity.class);
-                        History_Activity.this.startActivity(historyIntent);
+                       // Intent historyIntent = new Intent(History_Activity.this, History_Activity.class);
+                        //History_Activity.this.startActivity(historyIntent);
                         break;
                 }
                 return true;

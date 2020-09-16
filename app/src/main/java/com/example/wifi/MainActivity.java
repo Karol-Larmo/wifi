@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.action_grafy:
                         Toast.makeText(MainActivity.this, "Grafy", Toast.LENGTH_SHORT).show();
-                        Intent grafIntent = new Intent(MainActivity.this, Graf.class);
+                        Intent grafIntent = new Intent(MainActivity.this, Graf_bars.class);
                         startActivity(grafIntent);
                         break;
                     case R.id.action_historia:

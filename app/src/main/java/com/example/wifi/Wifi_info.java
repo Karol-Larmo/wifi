@@ -83,7 +83,7 @@ public class Wifi_info extends AppCompatActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-/*
+
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -96,12 +96,12 @@ public class Wifi_info extends AppCompatActivity {
                         break;
                     case R.id.action_sieci_WiFi:
                         Toast.makeText(Wifi_info.this, "Sieci_WiFi", Toast.LENGTH_SHORT).show();
-                        Intent infoIntent = new Intent(Wifi_info.this, Wifi_info.class);
-                        Wifi_info.this.startActivity(infoIntent);
+                        //Intent infoIntent = new Intent(Wifi_info.this, Wifi_info.class);
+                        //Wifi_info.this.startActivity(infoIntent);
                         break;
                     case R.id.action_grafy:
                         Toast.makeText(Wifi_info.this, "Grafy", Toast.LENGTH_SHORT).show();
-                        Intent grafIntent = new Intent(Wifi_info.this, Graf.class);
+                        Intent grafIntent = new Intent(Wifi_info.this, Graf_bars.class);
                         Wifi_info.this.startActivity(grafIntent);
                         break;
                     case R.id.action_historia:
@@ -112,7 +112,7 @@ public class Wifi_info extends AppCompatActivity {
                 }
                 return true;
             }
-        }); */
+        });
     }
 
     @Override
