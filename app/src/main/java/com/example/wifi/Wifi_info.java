@@ -135,7 +135,7 @@ public class Wifi_info extends AppCompatActivity {
     for(int i=0; i<10; i++)
     {
         Update_values();
-        Log.i("test", "asd petla chuj mi na dupe");
+
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {

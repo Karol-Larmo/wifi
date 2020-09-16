@@ -22,6 +22,12 @@ public class SurveyList {
     }
 
 
+
+
+
+
+
+
     public static class Survey {
         public String id;
         public static int[] Channels_ratio = new int[14];
@@ -50,6 +56,11 @@ public class SurveyList {
         public void putValue(int[] tab)
         {
             Channels_ratio = tab;
+        }
+
+        public int[] getValue ()
+        {
+            return Channels_ratio;
         }
 
     }

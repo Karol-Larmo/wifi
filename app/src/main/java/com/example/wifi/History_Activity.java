@@ -8,9 +8,14 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class History_Activity extends AppCompatActivity {
 
@@ -18,6 +23,8 @@ public class History_Activity extends AppCompatActivity {
     public static int[] Channel_count = new int[14];
     public final String Channel_STRING = "CHANNEL_RATIO_DATA";
     public final String ChannelShared = "ChannelShared";
+    private ListView list;
+    private ArrayAdapter<String> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +32,58 @@ public class History_Activity extends AppCompatActivity {
         setContentView(R.layout.activity_history);
 
         getValues();
+/*
+        list = (ListView) findViewById(R.id.history_list);
+        ArrayList<String> surveyList = new ArrayList<String>();
 
+        Log.i("Size", " " + SurveyList.ITEMS.size());
+        for (int i =0; i<SurveyList.ITEMS.size(); i ++)
+        {
+            int[] tab2 = new int[14];
+            int[] tab3 = new int[14];
+            SurveyList.Survey tmp = SurveyList.ITEMS.get(i);
+            tab2 = tmp.getValue();
+            tab3 = tmp.getValue();
+
+            int channel1 =0, channel2=0, channel3=0;
+            Arrays.sort(tab2);
+            for(int j=0; j<14; j++)
+            {
+                    if(tab2[j] == tab3[j] )
+                    {
+                        if(channel1 ==0)
+                        channel1 = j;
+                        else if(channel2 ==0)
+                            channel2 = j;
+                        else if (channel3 ==0)
+                            channel3 = j;
+
+                    }
+            }
+String string_tmp = "test";
+            //String string_tmp = "Survey " + i +
+              //      "\nBest Channels: " + channel1 + ", " + channel2 + ", " + channel3 +
+               //     "\n Values: \t" + tab2[0] + ", " + tab2[1] + ", " + tab2[2] ;
+
+            surveyList.add(string_tmp);
+
+            Log.i("String", "String added " + string_tmp + " " + tab2[0]);
+        }
+
+        adapter = new ArrayAdapter<String>(this, R.layout.dataset_survey, surveyList);
+        list.setAdapter(adapter);
+*/
+
+        list = (ListView) findViewById(R.id.history_list);
+
+        String cars[] = {"Mercedes", "Fiat", "Ferrari", "Aston Martin", "Lamborghini", "Skoda", "Volkswagen", "Audi", "Citroen"};
+
+        ArrayList<String> carL = new ArrayList<String>();
+        carL.addAll( Arrays.asList(cars) );
+
+        adapter = new ArrayAdapter<String>(this, R.layout.dataset_survey, carL);
+
+        list.setAdapter(adapter);
 
         BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigationH);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
