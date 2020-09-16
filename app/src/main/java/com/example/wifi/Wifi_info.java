@@ -62,10 +62,10 @@ public class Wifi_info extends AppCompatActivity {
         if (mainWifi != null) {
             info = mainWifi.getConnectionInfo();
         }
-         BSSID = info != null ? info.getBSSID() : null;
-
-        Log.i("SSID", BSSID);
-
+        BSSID = info != null ? info.getBSSID() : null;
+        if(BSSID != null) {
+            Log.i("SSID", BSSID);
+        }
         receiverWifi = new WifiReceiver();
         registerReceiver(receiverWifi, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
         scanWifiList();
@@ -84,7 +84,7 @@ public class Wifi_info extends AppCompatActivity {
         }
 
 
-        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        BottomNavigationView bottomNavigationView = (BottomNavigationView) findViewById(R.id.bottom_navigationW);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -132,6 +132,7 @@ public class Wifi_info extends AppCompatActivity {
 
     public void Channel_Ratio_10s(View view)
     {
+
     for(int i=0; i<10; i++)
     {
         Update_values();
@@ -140,20 +141,30 @@ public class Wifi_info extends AppCompatActivity {
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
+
+        for(int i=0; i<10; i++)
+        {
+            Update_values();
+            Log.i("test", "asd petla chuj mi na dupe");
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
         }
-    }
-    int[] tab = new int[14];
+        int[] tab = new int[14];
         for(int i=0; i<Channel_tab.length; i++)
         {
             tab[i] = Math.round(Channel_tab[i]);
         }
-    SurveyList.Survey survey= new SurveyList.Survey(String.valueOf(COUNT), tab);
-    SurveyList.addItem(survey);
-    COUNT++;
+        SurveyList.Survey survey= new SurveyList.Survey(String.valueOf(COUNT), tab);
+        SurveyList.addItem(survey);
+        COUNT++;
 
-    Intent data = new Intent(this, Channel_ratio.class);
-    ArrayList<String> channels_string = new ArrayList<>();
-    String tmp;
+        Intent data = new Intent(this, Channel_ratio.class);
+        ArrayList<String> channels_string = new ArrayList<>();
+        String tmp;
         for(int i=0; i<14; i++)
         {
             tmp = "Channel_"+ i +" = " + Channel_tab[i];
@@ -161,8 +172,8 @@ public class Wifi_info extends AppCompatActivity {
         }
 
 
-    data.putStringArrayListExtra("TAB_VALUES", channels_string);
-    startActivity(data);
+        data.putStringArrayListExtra("TAB_VALUES", channels_string);
+        startActivity(data);
 
     }
 
