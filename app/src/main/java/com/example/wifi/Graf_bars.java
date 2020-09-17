@@ -33,13 +33,17 @@ public class Graf_bars extends AppCompatActivity {
         wifiList1 = mainWifi.getScanResults();
 
         float[] tab = Wifi_info.Channel_tab;
-        String[] tmp = new String[14];
-        /*
-        for(int i=0; i<14; i++)
-        {
-            tmp[i] = "\t\tChannel_"+ (i+1) +" = " + tab[i];
+        float[] tab1 = Wifi_info.Channel_tab;
+        float min = tab1[0];
+
+
+        int channelMinNumber = 0;
+        for(int i = 0; i<wifiList1.size();i++) {
+            if(tab1[i] < min) {
+                min = tab1[i];
+                channelMinNumber = i + 1;
+            }
         }
-        */
         BarChart barChart = (BarChart) findViewById(R.id.barchart);
 
         ArrayList<BarEntry> entries = new ArrayList<>();
@@ -94,31 +98,34 @@ public class Graf_bars extends AppCompatActivity {
         xAxisLabel.add("12");
         xAxisLabel.add("13");
         xAxisLabel.add("14");
-
+    /*
         int[] colors = new int[] {ContextCompat.getColor(barChart.getContext(), R.color.dark_green),
                 ContextCompat.getColor(barChart.getContext(), R.color.blue),
                 ContextCompat.getColor(barChart.getContext(), R.color.red)};
 
-        int[] tmpColors = new int[13];
+     */
 
+        int[] tmpColors = new int[wifiList1.size()];
 
-        barChart.setData(data); // set the data and list of labels into chart
-        barChart.setDescription("Set Bar Chart Description Here");  // set the description
-
-
-    for(int i = 0; i< wifiList1.size(); i++) {
-        if (tab[i]<30) {
-            tmpColors[i] = getResources().getColor(R.color.dark_green);
-        } else if (tab[i]>=30 && tab[i]<60) {
-            tmpColors[i] = getResources().getColor(R.color.blue);//Color.rgb(247, 207, 19);
-        } else if (tab[i]>=60) {
-            tmpColors[i] = getResources().getColor(R.color.red);//Color.rgb(199, 0, 15);
+        for(int i = 0; i < wifiList1.size(); i++) {
+            if (tab[i]<30) {
+                tmpColors[i] = getResources().getColor(R.color.dark_green);
+            } else if (tab[i]>=30 && tab[i]<60) {
+                tmpColors[i] = getResources().getColor(R.color.blue);//Color.rgb(247, 207, 19);
+            } else if (tab[i]>=60) {
+                tmpColors[i] = getResources().getColor(R.color.red);//Color.rgb(199, 0, 15);
+            }
         }
-    }
 
 
         bardataset.setColors(tmpColors);
         barChart.animateY(5000);
+
+        barChart.setData(data); // set the data and list of labels into chart
+        barChart.setDescription("Optymalny kanał " + channelMinNumber);  // set the description
+
+
+
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
