@@ -192,6 +192,7 @@ public class History_Activity extends AppCompatActivity {
 
     public void clearList(View view) {
         SurveyList.clearList();
+        saveChannels();
         Intent historyIntent = new Intent(History_Activity.this, History_Activity.class);
        startActivity(historyIntent);
     }

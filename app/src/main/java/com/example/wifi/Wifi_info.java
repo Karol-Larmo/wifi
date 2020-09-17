@@ -166,7 +166,7 @@ public class Wifi_info extends AppCompatActivity {
             COUNTER--;
         }
         public  void onFinish(){
-            Toast.makeText(Wifi_info.this, "FINISHED LOL TEST", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(Wifi_info.this, "FINISHED LOL TEST", Toast.LENGTH_SHORT).show();
             timer.setVisibility(View.INVISIBLE);
             timer.setTextSize(1);
             int[] tab = new int[14];
