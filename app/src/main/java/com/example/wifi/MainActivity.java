@@ -41,17 +41,17 @@ public class MainActivity extends AppCompatActivity {
                         //MainActivity.this.startActivity(homeIntent);
                         break;
                     case R.id.action_sieci_WiFi:
-                        Toast.makeText(MainActivity.this, "Sieci_WiFi", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Networks", Toast.LENGTH_SHORT).show();
                         Intent infoIntent = new Intent(MainActivity.this, Wifi_info.class);
                         startActivity(infoIntent);
                         break;
                     case R.id.action_grafy:
-                        Toast.makeText(MainActivity.this, "Grafy", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "Graphs", Toast.LENGTH_SHORT).show();
                         Intent grafIntent = new Intent(MainActivity.this, Graf_bars.class);
                         startActivity(grafIntent);
                         break;
                     case R.id.action_historia:
-                        Toast.makeText(MainActivity.this, "Historia", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, "History", Toast.LENGTH_SHORT).show();
                         Intent historyIntent = new Intent(MainActivity.this, History_Activity.class);
                         startActivity(historyIntent);
                         break;

@@ -102,17 +102,17 @@ public class Wifi_info extends AppCompatActivity {
                         Wifi_info.this.startActivity(homeIntent);
                         break;
                     case R.id.action_sieci_WiFi:
-                        Toast.makeText(Wifi_info.this, "Sieci_WiFi", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Wifi_info.this, "Networks", Toast.LENGTH_SHORT).show();
                         //Intent infoIntent = new Intent(Wifi_info.this, Wifi_info.class);
                         //Wifi_info.this.startActivity(infoIntent);
                         break;
                     case R.id.action_grafy:
-                        Toast.makeText(Wifi_info.this, "Grafy", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Wifi_info.this, "Graphs", Toast.LENGTH_SHORT).show();
                         Intent grafIntent = new Intent(Wifi_info.this, Graf_bars.class);
                         Wifi_info.this.startActivity(grafIntent);
                         break;
                     case R.id.action_historia:
-                        Toast.makeText(Wifi_info.this, "Historia", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Wifi_info.this, "History", Toast.LENGTH_SHORT).show();
                         Intent historyIntent = new Intent(Wifi_info.this, History_Activity.class);
                         Wifi_info.this.startActivity(historyIntent);
                         break;

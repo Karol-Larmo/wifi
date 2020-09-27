@@ -14,18 +14,18 @@
         android:id="@+id/action_sieci_WiFi"
         android:enabled="true"
         android:icon="@drawable/wifi"
-        android:title="Sieci WiFi"
+        android:title="Networks"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_grafy"
         android:enabled="true"
         android:icon="@drawable/graph"
-        android:title="Grafy"
+        android:title="Graphs"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_historia"
         android:enabled="true"
         android:icon="@drawable/history"
-        android:title="Historia"
+        android:title="History"
         app:showAsAction="ifRoom" />
 </menu>

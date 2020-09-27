@@ -92,17 +92,17 @@ public class History_Activity extends AppCompatActivity {
                         History_Activity.this.startActivity(homeIntent);
                         break;
                     case R.id.action_sieci_WiFi:
-                        Toast.makeText(History_Activity.this, "Sieci_WiFi", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(History_Activity.this, "Networks", Toast.LENGTH_SHORT).show();
                         Intent infoIntent = new Intent(History_Activity.this, Wifi_info.class);
                         History_Activity.this.startActivity(infoIntent);
                         break;
                     case R.id.action_grafy:
-                        Toast.makeText(History_Activity.this, "Grafy", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(History_Activity.this, "Graphs", Toast.LENGTH_SHORT).show();
                         Intent grafIntent = new Intent(History_Activity.this, Graf_bars.class);
                         History_Activity.this.startActivity(grafIntent);
                         break;
                     case R.id.action_historia:
-                        Toast.makeText(History_Activity.this, "Historia", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(History_Activity.this, "History", Toast.LENGTH_SHORT).show();
                        // Intent historyIntent = new Intent(History_Activity.this, History_Activity.class);
                         //History_Activity.this.startActivity(historyIntent);
                         break;
