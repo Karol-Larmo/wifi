@@ -17,6 +17,7 @@ import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Graf_bars extends AppCompatActivity {
@@ -36,7 +37,7 @@ public class Graf_bars extends AppCompatActivity {
         float[] tab1 = Wifi_info.Channel_tab;
         float min = tab1[0];
 
-
+/*
         int channelMinNumber = 0;
         for(int i = 0; i<wifiList1.size();i++) {
             if(tab1[i] < min) {
@@ -44,9 +45,12 @@ public class Graf_bars extends AppCompatActivity {
                 channelMinNumber = i + 1;
             }
         }
+
+ */
         BarChart barChart = (BarChart) findViewById(R.id.barchart);
 
         ArrayList<BarEntry> entries = new ArrayList<>();
+
         entries.add(new BarEntry(tab[0], 0));
         entries.add(new BarEntry(tab[1], 1));
         entries.add(new BarEntry(tab[2], 2));
@@ -82,7 +86,7 @@ public class Graf_bars extends AppCompatActivity {
         labels.add("14");
 
         BarData data = new BarData(labels, bardataset);
-
+/*
         final ArrayList<String> xAxisLabel = new ArrayList<>();
         xAxisLabel.add("1");
         xAxisLabel.add("2");
@@ -98,16 +102,11 @@ public class Graf_bars extends AppCompatActivity {
         xAxisLabel.add("12");
         xAxisLabel.add("13");
         xAxisLabel.add("14");
-    /*
-        int[] colors = new int[] {ContextCompat.getColor(barChart.getContext(), R.color.dark_green),
-                ContextCompat.getColor(barChart.getContext(), R.color.blue),
-                ContextCompat.getColor(barChart.getContext(), R.color.red)};
+*/
 
-     */
+        int[] tmpColors = new int[14];
 
-        int[] tmpColors = new int[wifiList1.size()];
-
-        for(int i = 0; i < wifiList1.size(); i++) {
+        for(int i = 0; i < 14; i++) {
             if (tab[i]<30) {
                 tmpColors[i] = getResources().getColor(R.color.dark_green);
             } else if (tab[i]>=30 && tab[i]<60) {
@@ -122,7 +121,7 @@ public class Graf_bars extends AppCompatActivity {
         barChart.animateY(5000);
 
         barChart.setData(data); // set the data and list of labels into chart
-        barChart.setDescription("Optymalny kanał " + channelMinNumber);  // set the description
+        barChart.setDescription(""); //+ channelMinNumber);  // set the description
 
 
 
@@ -130,6 +129,11 @@ public class Graf_bars extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
+
+
+        tab = null;
+        tmpColors = null;
+        wifiList1.clear();
     }
 
 
