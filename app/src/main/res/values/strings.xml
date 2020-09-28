@@ -3,6 +3,6 @@
     <string name="permission_msg">"As of Android Marshmallow, location permissions are required to perform a Wi-Fi scan. You will be prompted to enable location services/permissions. Since this app does not require internet access, you can be confident that this app cannot transmit your location!"</string>
     <string name="location_msg">"This app can get your exact location only when it is in the foreground. These location services must be turned on and available on your phone for the app to be able to use them. This may increase battery consumption."</string>
     <string name="app_full_name" translatable="false">"FIX THE WIFI"</string>
-    <string name="introduction">Witaj! Jestem Marcin Ruter Ping i będę Twoim asystentem.</string>
+    <string name="introduction">Hi! I\'m Martin Router Ping and I will be your assistant!</string>
     <string name="start">START</string>
 </resources>

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -19,10 +20,23 @@ public class Channel_ratio extends AppCompatActivity {
         setContentView(R.layout.activity_channel_ratio);
         button_graf = (Button) findViewById(R.id.button_graf);
         Show_Channel();
+
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
     }
     public void Graf_bars(View view) {
         Intent intent = new Intent(this, Graf_bars.class);
         startActivity(intent);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     public void Show_Channel()
